@@ -31,7 +31,6 @@ function* fetchAllMovies() {
 }
 
 function* fetchGenre(action) {
-    console.log('fetch genre id', action.payload);
     try {
         console.log("in the fetch genre saga:", action.payload)
         const response = yield axios.post("/api/genre",  action.payload)
