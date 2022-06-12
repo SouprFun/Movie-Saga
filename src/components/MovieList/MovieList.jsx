@@ -23,34 +23,37 @@ function MovieList() {
         console.log("movie click", movie);
         dispatch({ type: "SELECT", payload: movie });
         dispatch({ type: 'FETCH_GENRE', payload: movie })
-        // <Details movie={movie} />
+        setTimeout(history.push("/details"), 3000)
         history.push("/details")
     }
 
     return (
-        <main>
+        <main >
             <h1>MovieList</h1>
-            {movies.map(movie => {
-                return (
-                    <Card sx={{ maxWidth: 300 }}>
-                        <CardMedia
-                            component="img"
-                            height="140"
-                            image={movie.poster} 
-                            alt={movie.title}
-                        />
-                        <CardContent>
-                            <div key={movie.id}>
-                                <div className='card-body'>
-                                    <h3 className='card-title'>{movie.title}</h3>
-                                    <img src={movie.poster} alt={movie.title} onClick={() => movieClick(movie)} />
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
-                );
-            })}
-        </main>
+            <div className='movies'>
+
+                {movies.map(movie => {
+                    return (
+                        <Card onClick={() =>movieClick(movie)} key={movie.id} className='movies card' sx={{ maxWidth: 250 }}>
+                            <CardMedia
+                                component="img"
+                                height="400"
+                                image={movie.poster}
+                                alt={movie.title}
+                            />
+                            <CardActionArea>
+                                <CardContent>
+                                    <div className='card-body'>
+                                        <h3 className='card-title'>{movie.title}</h3>
+                                        {/* <img src={movie.poster} alt={movie.title} onClick={() => movieClick(movie)} /> */}
+                                    </div>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    );
+                })}
+            </div>
+        </main >
 
     );
 }

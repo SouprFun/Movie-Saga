@@ -1,0 +1,17 @@
+.details{
+    width: 90%;
+    height: 90%;
+    background-color: deepskyblue;
+    margin: auto;
+}
+
+.details p {
+    width: 70%;
+    margin: auto;
+    color: aliceblue;
+    font-size: 18px;
+}
+
+.details h4{
+    margin: 0px;
+}

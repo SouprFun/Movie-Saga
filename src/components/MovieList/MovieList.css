@@ -1,4 +1,12 @@
 .movies {
     display : flex;
     flex-wrap: wrap;
+    padding: 40px;
+    margin: 10px;
+    background-color: deepskyblue;
+}
+
+.card{
+    background-color: rgb(255, 21, 0);
+    color: aquamarine;
 }
