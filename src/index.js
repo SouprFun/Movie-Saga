@@ -14,6 +14,7 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
+    yield takeEvery('FETCH_GENRE', fetchGenre);
 }
 
 function* fetchAllMovies() {
@@ -26,16 +27,40 @@ function* fetchAllMovies() {
     } catch {
         console.log('get all error');
     }
-        
+
+}
+
+function* fetchGenre(action) {
+    console.log('fetch genre id', action.payload);
+    try {
+        console.log("in the fetch genre saga:", action.payload)
+        const response = yield axios.post("/api/genre",  action.payload)
+        console.log("fetch genre response: ", response);
+        yield put({ type: 'SELECT_GENRE', payload: response.data })
+
+    } catch {
+        console.error(`error fetching genres`);
+    }
 }
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
 const selected = (state = "", action) => {
-    console.log("sel red -----",action);
+    console.log("sel red -----", action);
     switch (action.type) {
         case 'SELECT':
+            console.log("what i want ----");
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+const selectedGenre = (state = "", action) => {
+    console.log("sel red -----", action);
+    switch (action.type) {
+        case 'SELECT_GENRE':
             console.log("what i want ----");
             return action.payload;
         default:
@@ -69,6 +94,7 @@ const storeInstance = createStore(
         movies,
         genres,
         selected,
+        selectedGenre,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
@@ -80,7 +106,7 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={storeInstance}>
-        <App />
+            <App />
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

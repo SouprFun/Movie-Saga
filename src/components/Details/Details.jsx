@@ -3,8 +3,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Details() {
-const selected = useSelector(store => store.selected)
-console.log("selected: ", selected);
+    const everything = useSelector(store => store);
+    console.log("everything: ", everything);
+    const selected = everything.selected 
+    const genre = everything.selectedGenre;
+    console.log('genre: ',genre);
     return (
         <div>
             <h3>Details</h3>

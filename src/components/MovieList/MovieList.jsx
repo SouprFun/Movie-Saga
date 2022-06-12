@@ -15,7 +15,8 @@ function MovieList() {
 
     function movieClick(movie) {
         console.log("movie click", movie);
-        dispatch({ type: "SELECT", payload: movie})
+        dispatch({ type: "SELECT", payload: movie });
+        dispatch({ type: 'FETCH_GENRE', payload: movie })
         // <Details movie={movie} />
         history.push("/details")
     }
@@ -28,7 +29,7 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title} onClick={() => movieClick(movie)}/>
+                            <img src={movie.poster} alt={movie.title} onClick={() => movieClick(movie)} />
                             {/* <img src={movie.poster} alt={movie.title} onClick={() => (
                                 <Details movie={movie} />
                             )} /> */}
