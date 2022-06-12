@@ -1,7 +1,7 @@
 import { HashRouter as Router, Route, Switch, NavLink, useHistory } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import "./Details.css"
 function Details() {
     const everything = useSelector(store => store);
     console.log("everything: ", everything);
@@ -11,14 +11,17 @@ function Details() {
     return (
         <div>
             <h3>Details</h3>
-            <h3>{selected.title}</h3>
-            <div>
-                {genres.map(genre => (
-                    <>{genre.name}, </>
-                ))}
+            <div className='details'>
+                <h3>{selected.title}</h3>
+                <div>
+                    <h4> Genres:</h4>
+                    {genres ? genres.map(genre => (
+                        <section key={genre.id}>{genre.name} </section>
+                    )) : ''}
+                </div>
+                <img src={selected.poster} alt={selected.title} />
+                <p>{selected.description}</p>
             </div>
-            <img src={selected.poster} alt={selected.title} />
-            <p>{selected.description}</p>
             <Router>
                 <nav id='navBar'>
                     <div>

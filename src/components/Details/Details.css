@@ -1,0 +1,18 @@
+.details{
+    width: 90%;
+    height: 90%;
+    background-color: rgb(0, 42, 255);
+    margin: auto;
+    color: orange;
+}
+
+.details p {
+    width: 70%;
+    margin: auto;
+    color: aliceblue;
+    font-size: 18px;
+}
+
+.details h4{
+    margin: 0px;
+}

@@ -2,13 +2,19 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 import { useHistory } from 'react-router-dom'
-import Details from '../Details/Details';
+// MUI imports
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
 
 function MovieList() {
     const history = useHistory();
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
     console.log('from the store:', movies);
+
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
@@ -17,27 +23,37 @@ function MovieList() {
         console.log("movie click", movie);
         dispatch({ type: "SELECT", payload: movie });
         dispatch({ type: 'FETCH_GENRE', payload: movie })
-        // <Details movie={movie} />
+        setTimeout(history.push("/details"), 3000)
         history.push("/details")
     }
 
     return (
-        <main>
+        <main >
             <h1>MovieList</h1>
-            <section className="movies">
+            <div className='movies'>
+
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} >
-                            <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title} onClick={() => movieClick(movie)} />
-                            {/* <img src={movie.poster} alt={movie.title} onClick={() => (
-                                <Details movie={movie} />
-                            )} /> */}
-                        </div>
+                        <Card onClick={() =>movieClick(movie)} key={movie.id} className='movies card' sx={{ maxWidth: 250 }}>
+                            <CardMedia
+                                component="img"
+                                height="400"
+                                image={movie.poster}
+                                alt={movie.title}
+                            />
+                            <CardActionArea>
+                                <CardContent>
+                                    <div className='card-body'>
+                                        <h3 className='card-title'>{movie.title}</h3>
+                                        {/* <img src={movie.poster} alt={movie.title} onClick={() => movieClick(movie)} /> */}
+                                    </div>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
                     );
                 })}
-            </section>
-        </main>
+            </div>
+        </main >
 
     );
 }
