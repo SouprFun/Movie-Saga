@@ -21,16 +21,16 @@ function Details() {
                 </div>
                 <img src={selected.poster} alt={selected.title} />
                 <p>{selected.description}</p>
-                <Router>
-                    <nav id='navBar'>
-                        <div>
-                            <NavLink to="/">
-                                <h3>Back</h3>
-                            </NavLink>
-                        </div>
-                    </nav>
-                </Router>
             </div>
+            <Router>
+                <nav id='navBar'>
+                    <div>
+                        <NavLink to="/">
+                            <h3>Back</h3>
+                        </NavLink>
+                    </div>
+                </nav>
+            </Router>
         </div>
     )
 }
