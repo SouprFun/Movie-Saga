@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
-import { useHistory } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, NavLink, useHistory } from 'react-router-dom';
 // MUI imports
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import Link from '@mui/material/Link';
+import AddMovie from '../AddMovie/AddMovie';
+
 
 function MovieList() {
     const history = useHistory();
@@ -21,20 +24,37 @@ function MovieList() {
 
     function movieClick(movie) {
         console.log("movie click", movie);
+
+        // dispatches to set saga/reducer to set the details page to the selected movie info
         dispatch({ type: "SELECT", payload: movie });
+        // dispatches to the server to collect the genre for the selected movie
         dispatch({ type: 'FETCH_GENRE', payload: movie })
-        setTimeout(history.push("/details"), 3000)
+        //pushes to the details page, don't think the settimeout works tho 
+        //setTimeout(history.push("/details"), 3000)
         history.push("/details")
+    }
+
+    function AddMovie(){
+        history.push("/addmovie")
     }
 
     return (
         <main >
+            {/* <Router>
+                <nav id='navBar'>
+                    <div>
+                        <Link underline='hover' className='backlink' onClick={() => AddMovie()}>
+                            <h3>Add Movie</h3>
+                        </Link>
+                    </div>
+                </nav>
+            </Router> */}
             <h1>MovieList</h1>
             <div className='movies'>
 
                 {movies.map(movie => {
                     return (
-                        <Card onClick={() =>movieClick(movie)} key={movie.id} className='movies card' sx={{ maxWidth: 250 }}>
+                        <Card onClick={() => movieClick(movie)} key={movie.id} className='movies card' sx={{ maxWidth: 250 }}>
                             <CardMedia
                                 component="img"
                                 height="400"

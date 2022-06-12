@@ -4,6 +4,8 @@
     background-color: rgb(0, 42, 255);
     margin: auto;
     color: orange;
+    padding-top: 20px;
+    padding-bottom: 40px;
 }
 
 .details p {
@@ -15,4 +17,8 @@
 
 .details h4{
     margin: 0px;
+}
+
+.backlink:hover {
+    cursor: pointer;
 }
