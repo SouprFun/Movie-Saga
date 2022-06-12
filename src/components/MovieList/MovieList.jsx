@@ -25,16 +25,15 @@ function MovieList() {
     return (
         <main>
             <h1>MovieList</h1>
-            <div className='container'>
+            <div className='row row-cols-1 row-cols-md-4'>
                 <section className="movies">
                     {movies.map(movie => {
                         return (
-                            <div key={movie.id} >
-                                <h3>{movie.title}</h3>
+                            <div key={movie.id} className="card" >
+                                <div className='card-body'>
+                                <h3 className='card-title'>{movie.title}</h3>
                                 <img src={movie.poster} alt={movie.title} onClick={() => movieClick(movie)} />
-                                {/* <img src={movie.poster} alt={movie.title} onClick={() => (
-                                <Details movie={movie} />
-                            )} /> */}
+                                </div>
                             </div>
                         );
                     })}
