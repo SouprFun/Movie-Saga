@@ -1,5 +1,5 @@
 .movies {
-    display : flex;
+    display: flex;
     flex-wrap: wrap;
     align-items: center;
     padding: 40px;
@@ -7,18 +7,18 @@
     background-color: deepskyblue;
 }
 
-.movies .card{
+.movies .card {
     background-color: rgb(0, 42, 255);
     color: aquamarine;
 }
 
 @keyframes expand {
-    0%   {transform: scale(1.0)}
-    20%  {transform: scale(1.05)}
-    80%  {transform: scale(1.1)}
+    0% {transform: scale(1.0)}
+    20% {transform: scale(1.05)}
+    80% {transform: scale(1.1)}
 }
 
-.movies .card:hover{
-    cursor:grab ;
+.movies .card:hover {
+    cursor: grab;
     animation: expand .3s ease 0s 1 normal forwards;
 }

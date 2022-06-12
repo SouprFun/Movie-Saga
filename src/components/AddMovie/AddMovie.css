@@ -1,0 +1,13 @@
+.input{
+    margin-left: 10px;
+    margin-right: 10px;
+    align-items: center;
+}
+
+.form {
+    align-items: center;
+}
+
+.submitButton{
+    padding: 10px;
+}
