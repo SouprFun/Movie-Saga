@@ -2,7 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 import { useHistory } from 'react-router-dom'
-import Details from '../Details/Details';
+// MUI imports
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
 
 function MovieList() {
     const history = useHistory();
@@ -25,20 +30,26 @@ function MovieList() {
     return (
         <main>
             <h1>MovieList</h1>
-            <div className='row row-cols-1 row-cols-md-4'>
-                <section className="movies">
-                    {movies.map(movie => {
-                        return (
-                            <div key={movie.id} className="card" >
+            {movies.map(movie => {
+                return (
+                    <Card sx={{ maxWidth: 300 }}>
+                        <CardMedia
+                            component="img"
+                            height="140"
+                            image={movie.poster} 
+                            alt={movie.title}
+                        />
+                        <CardContent>
+                            <div key={movie.id}>
                                 <div className='card-body'>
-                                <h3 className='card-title'>{movie.title}</h3>
-                                <img src={movie.poster} alt={movie.title} onClick={() => movieClick(movie)} />
+                                    <h3 className='card-title'>{movie.title}</h3>
+                                    <img src={movie.poster} alt={movie.title} onClick={() => movieClick(movie)} />
                                 </div>
                             </div>
-                        );
-                    })}
-                </section>
-            </div>
+                        </CardContent>
+                    </Card>
+                );
+            })}
         </main>
 
     );
