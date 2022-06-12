@@ -6,12 +6,14 @@ import Link from '@mui/material/Link';
 
 function Details() {
     const history = useHistory();
+    //pulls everything out of the store
     const everything = useSelector(store => store);
     console.log("everything: ", everything);
+    //sets 2 other variables to the store
     const selected = everything.selected
     const genres = everything.selectedGenre;
     console.log('genres: ', genres);
-    
+
     return (
         <div>
             <h3>Details</h3>

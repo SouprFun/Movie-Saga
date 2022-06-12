@@ -24,9 +24,13 @@ function MovieList() {
 
     function movieClick(movie) {
         console.log("movie click", movie);
+
+        // dispatches to set saga/reducer to set the details page to the selected movie info
         dispatch({ type: "SELECT", payload: movie });
+        // dispatches to the server to collect the genre for the selected movie
         dispatch({ type: 'FETCH_GENRE', payload: movie })
-        setTimeout(history.push("/details"), 3000)
+        //pushes to the details page, don't think the settimeout works tho 
+        //setTimeout(history.push("/details"), 3000)
         history.push("/details")
     }
 
@@ -36,7 +40,7 @@ function MovieList() {
 
     return (
         <main >
-            <Router>
+            {/* <Router>
                 <nav id='navBar'>
                     <div>
                         <Link underline='hover' className='backlink' onClick={() => AddMovie()}>
@@ -44,7 +48,7 @@ function MovieList() {
                         </Link>
                     </div>
                 </nav>
-            </Router>
+            </Router> */}
             <h1>MovieList</h1>
             <div className='movies'>
 

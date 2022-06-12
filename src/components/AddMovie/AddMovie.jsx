@@ -11,12 +11,12 @@ import { Button } from "@mui/material";
 function AddMovie() {
     const history = useHistory();
     const dispatch = useDispatch();
-    let [title, setTitle] = useState();
-    let [posterUrl, setPosterUrl] = useState();
-    let [movieDesc, setMovieDesc] = useState();
-    let [genre, setgenre] = useState();
+    let [title, setTitle] = useState("");
+    let [posterUrl, setPosterUrl] = useState("");
+    let [movieDesc, setMovieDesc] = useState("");
+    let [genre, setgenre] = useState([]);
 
-    
+
 
 
     return (

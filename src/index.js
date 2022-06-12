@@ -31,6 +31,8 @@ function* fetchAllMovies() {
 }
 
 function* fetchGenre(action) {
+    //does an axios post to the server to have a payload of the movie id that needs to be put in the query text to collect
+    //the selected movie genre from the database. 
     try {
         console.log("in the fetch genre saga:", action.payload)
         const response = yield axios.post("/api/genre",  action.payload)
@@ -49,7 +51,6 @@ const selected = (state = "", action) => {
     console.log("sel red -----", action);
     switch (action.type) {
         case 'SELECT':
-            console.log("what i want ----");
             return action.payload;
         default:
             return state;
@@ -57,6 +58,7 @@ const selected = (state = "", action) => {
 }
 
 const selectedGenre = (state = "", action) => {
+    //stores selected genres
     switch (action.type) {
         case 'SELECT_GENRE':
             return action.payload;
