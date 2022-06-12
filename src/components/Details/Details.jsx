@@ -12,10 +12,11 @@ function Details() {
         <div>
             <h3>Details</h3>
             <h3>{selected.title}</h3>
-            <div>
-                {genres.map(genre => (
-                    <>{genre.name}, </>
-                ))}
+            <div> 
+                <h4> Genres:</h4>
+                {genres ? genres.map(genre => (
+                    <section key={genre.id}>{genre.name} </section>
+                )) : ''}
             </div>
             <img src={selected.poster} alt={selected.title} />
             <p>{selected.description}</p>

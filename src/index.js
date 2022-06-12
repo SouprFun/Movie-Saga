@@ -57,10 +57,8 @@ const selected = (state = "", action) => {
 }
 
 const selectedGenre = (state = "", action) => {
-    console.log("sel red -----", action);
     switch (action.type) {
         case 'SELECT_GENRE':
-            console.log("what i want ----");
             return action.payload;
         default:
             return state;
